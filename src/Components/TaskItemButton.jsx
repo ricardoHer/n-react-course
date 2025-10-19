@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 
-function TaskItemButton({ onClick, children, task }) {
+function TaskItemButton(props) {
   return (
     <button
       className={`bg-slate-400 text-left text-white p-3 rounded-md w-full 
-                ${task.isCompleted && "line-through"}`}
-      onClick={() => onClick(task.id)}
+            ${props.task.isCompleted && "line-through"}
+            ${props.className || ""}
+            `}
+      onClick={props.onClick}
     >
-      {children}
+      {props.children}
     </button>
   );
 }
@@ -16,6 +18,7 @@ TaskItemButton.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
   task: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };
 
 export default TaskItemButton;

@@ -1,4 +1,4 @@
-import { ChevronRightIcon, TrashIcon } from "lucide-react";
+import { CheckIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
 import PropTypes from "prop-types";
 import SmallButton from "./SmallButton.jsx";
 import TaskItemButton from "./TaskItemButton.jsx";
@@ -6,7 +6,12 @@ import TaskItemButton from "./TaskItemButton.jsx";
 function TaskItem({ task, onTaskClicked, goToSeeDetails, onDeleteTask }) {
   return (
     <li className="flex gap-2" key={task.id}>
-      <TaskItemButton onClick={() => onTaskClicked(task.id)} task={task}>
+      <TaskItemButton
+        onClick={() => onTaskClicked(task.id)}
+        task={task}
+        className="flex items-center gap-2 flex-1"
+      >
+        {task.isCompleted ? <CheckIcon /> : null}
         {task.title}
       </TaskItemButton>
 
